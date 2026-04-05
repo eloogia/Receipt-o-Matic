@@ -235,4 +235,4 @@ receipt-o-matic/
 - Sebastian Garcia (https://github.com/eloogia) – Data Analysis, Data Modeling, Power BI
 - Luisa Vargas (https://github.com/lxvargasg) – Data Modeling, Data Cleaning, Validation
 
-Personal project demonstrating an end-to-end data pipeline combining OCR, automation, data modeling, and business intelligence.2026
+Personal project demonstrating an end-to-end data pipeline combining OCR, automation, data modeling, and business intelligence. 2026
