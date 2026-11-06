@@ -73,7 +73,7 @@ Relationship: `ProductosMercado[trackingId]` → `ConsumoOCR[trackingId]` (many-
 Measure and table names in Power BI are also in Spanish: `Gastos` = expenses, `Mes` = month, `Recibos` = receipts, `Promedio Compra` = average purchase, `Calendario` = calendar, `SIN_CATEGORIA` = uncategorised.
 
 ### Product categorisation (keyword + priority)
-Receipt item names are short and messy (e.g. `NESC.CAF.INST.RI`) and often in French. Each item gets the category of the **most specific keyword** found in its name: priority 1 (specific, e.g. "sauce", "bbq") beats priority 3 (generic, e.g. "poulet", "boeuf"). The sample mapping has 126 keywords across 51 categories.
+Receipt item names are short and messy (e.g. `NESC.CAF.INST.RI`) and often in French. Each item gets the category of the **most specific keyword** found in its name: priority 1 (specific, e.g. "sauce", "bbq") beats priority 3 (generic, e.g. "poulet", "boeuf"). The sample mapping has 133 keywords across 54 categories.
 
 ```DAX
 CategoriaPrincipal =
@@ -110,7 +110,7 @@ Two report pages:
 README.md
 LICENSE
 dashboard/receipt-o-matic.pbit     Power BI template (model + report, no data)
-data/sample_data.xlsx              anonymised sample: 28 receipts, 221 line items, 24 manual expenses, 126 keywords
+data/sample_data.xlsx              anonymised sample: 38 receipts, 363 line items, 25 manual expenses, 133 keywords
 docs/architecture.png
 docs/make_blueprint.json           Make scenario export (API key, Drive folder and spreadsheet IDs replaced with placeholders)
 screenshots/                       dashboard and scenario images
@@ -122,7 +122,8 @@ screenshots/                       dashboard and scenario images
 3. **Power BI:** open `dashboard/receipt-o-matic.pbit`. When asked for the data source, point it to `data/sample_data.xlsx`, or to an export of your own Google Sheet, then refresh.
 
 ## Notes and known limitations
-- Sample data is anonymised (store names replaced with "Store A", "Store B"…). No API keys or credentials are included.
+- Sample data is anonymised (store names replaced with "Store A", "Store B"…, cities with "City A", "City B"…, notes removed or generalised). No API keys or credentials are included.
+- The sample was refreshed in November 2026 from the cleaned production sheet: 38 receipts from February to July 2026, where each receipt total equals the sum of its line items plus tax. Some recent receipts with poor OCR were re-read with a vision-based OCR pass and validated against the printed totals before being included.
 - The Power BI template reads the Excel export, not a live Google Sheets connection. It was saved with a local file path, so Power BI will ask you to locate `data/sample_data.xlsx` the first time you open it.
 - Categorisation is rule-based, so new products need new keywords. Items with no match show as `SIN_CATEGORIA`.
 - Taggun OCR quality depends on the photo. Line items occasionally need manual correction.
